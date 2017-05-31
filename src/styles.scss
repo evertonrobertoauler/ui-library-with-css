@@ -10,5 +10,9 @@ h3 {
   font-family: 'Montserrat', sans-serif;
 }
 
+@import "./scss/grid.scss";
+
 @import "./scss/avatar.scss";
 @import "./scss/button.scss";
+@import "./scss/card.scss";
+@import "./scss/badge.scss";

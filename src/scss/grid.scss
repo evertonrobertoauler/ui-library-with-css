@@ -1,0 +1,61 @@
+$grid-columns: 4;
+$breakpoints: (xs: (0, 599px), sm: (600px, 959px), md: (960px, 1279px), lg: (1280px, 1919px), xl: (1920px, 5000px));
+$breakpoints-lt: (sm: 599px, md: 959px, lg: 1279px, xl: 1919px);
+$breakpoints-gt: (xs: 600px, sm: 960px, md: 1280px, lg: 1920px);
+
+.row {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.col {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+// Mixins
+@mixin hide($selector) {
+  #{$selector} {
+    display: none;
+  }
+}
+@mixin grid-cols($selector) {
+   @for $i from 1 through $grid-columns{
+    #{$selector}-#{$i} {
+      width: 100% * $i / $grid-columns;
+    }
+    @if $i != $grid-columns {
+      #{$selector}-offset-#{$i} {
+        margin-left: 100% * $i / $grid-columns;
+      }
+    }
+  }
+}
+
+// Globals
+@include hide(".hide");
+@include grid-cols(".col");
+
+// Responsive
+@each $breakpoint, $sizes in $breakpoints {
+   @media only screen and (min-width: nth($sizes, 1)) and (max-width: nth($sizes, 2)){
+    @include hide(".hide-#{$breakpoint}");
+    @include grid-cols(".col-#{$breakpoint}");
+  }
+}
+@each $breakpoint, $size in $breakpoints-lt {
+   @media only screen and (max-width: $size){
+    @include hide(".hide-lt-#{$breakpoint}");
+    @include grid-cols(".col-lt-#{$breakpoint}");
+  }
+}
+@each $breakpoint, $size in $breakpoints-gt {
+   @media only screen and (min-width: $size){
+    @include hide(".hide-gt-#{$breakpoint}");
+    @include grid-cols(".col-gt-#{$breakpoint}");
+  }
+}
