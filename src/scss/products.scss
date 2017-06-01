@@ -7,7 +7,6 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    flex-wrap: wrap;
 
     &:hover {
       background: #E6E6E6;
@@ -28,6 +27,7 @@
     }
 
     .image {
+      max-width: 25%;
       border-radius: 5px;
     }
 
@@ -41,7 +41,6 @@
       width: 100px;
       display: flex;
       justify-content: space-around;
-      flex-wrap: wrap;
 
       .fa {
         cursor: pointer;
