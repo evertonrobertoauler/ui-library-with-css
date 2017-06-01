@@ -1,0 +1,55 @@
+.products {
+  display: flex;
+  flex-direction: column;
+
+  .product {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+
+    &:hover {
+      background: #E6E6E6;
+
+      .upvote {
+        font-weight: bolder;
+      }
+    }
+
+    .upvote {
+      width: 50px;
+      text-align: center;
+      cursor: pointer;
+
+      &:hover {
+        color: #4099FF;
+      }
+    }
+
+    .image {
+      border-radius: 5px;
+    }
+
+    .description {
+      flex: 1 0 auto;
+      padding: 0 5px;
+    }
+
+    .actions {
+      color: #CCCCCC;
+      width: 100px;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+
+      .fa {
+        cursor: pointer;
+
+        &:hover {
+          color: #4099FF;
+        }
+      }
+    }
+  }
+}
